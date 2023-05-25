@@ -31,4 +31,33 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.put('/:this.postId', async (req, res) => {
+    const data = {
+        content: req.body.content
+    }
+    try {
+        const post = await Post.updateOne({
+            _id: req.params.postId
+        }, data)
+        res.json(post)
+    } catch (error) {
+        res.json({
+            message: error
+        })
+    }
+})
+
+router.delete('/:postId', async (req, res) => {
+    try {
+        const post = await Post.deleteOne({
+            _id: req.params.postId
+        })
+        res.json(post)
+    } catch (error) {
+        res.json({
+            message: error
+        })
+    }
+})
+
 module.exports = router
