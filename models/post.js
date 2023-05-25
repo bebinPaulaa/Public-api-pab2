@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
 const postSchema = mongoose.Schema({
     content: {
         type: String,
@@ -15,12 +14,13 @@ const postSchema = mongoose.Schema({
     },
     modified_date: {
         type: Date,
-        default: null
+        required: null
     },
-    Username: {
+    username: {
         type: String,
         required: true
     }
+ 
 })
-
-module.exports = mongoose.model('Post', postSchema)
+ 
+module.exports = mongoose.model('Post', postSchema, 'post')
